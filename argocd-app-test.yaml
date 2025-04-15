@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: test
+  namespace: test
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/RomalB22/gitops
+    targetRevision: HEAD
+    path: environments/test
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: dev
+  syncPolicy:
+    automated: {}
+
